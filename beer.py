@@ -34,27 +34,24 @@ def num2name(num) :
 
     return name
 
+def count2s(num) :
+    if num == 1 :
+        return ""
+    else:
+        return "s"
 
 def main() :
     """
     Main driver loop. Maintains the base text and substitutes the numbers to make it work.
     Checks for count to compensate for bottle vs bottles, in 2 places. 
+    Calculate the plurality and have one output string set
     """
 
     for count in range(99, 0, -1) :
-        if count > 2:
-            print "%s bottles of beer on the wall.\n" \
-                  "%s bottles of beer. Take one down,\n" \
-                  "pass it around... %s bottles of beer.\n" % (num2name(count).capitalize(), num2name(count).capitalize(), num2name(count-1).capitalize())
-        if count == 2:          
-            print "%s bottles of beer on the wall.\n" \
-                  "%s bottles of beer. Take one down,\n" \
-                  "pass it around... %s bottle of beer.\n" % (num2name(count).capitalize(), num2name(count).capitalize(), num2name(count-1).capitalize())
-        if count ==1:          
-            print "%s bottle of beer on the wall.\n" \
-                  "%s bottle of beer. Take one down,\n" \
-                  "pass it around... %s bottles of beer.\n" % (num2name(count).capitalize(), num2name(count).capitalize(), num2name(count-1).capitalize())
-
+        values = (num2name(count).capitalize(), count2s(count), num2name(count).capitalize(), count2s(count), num2name(count-1).capitalize(), count2s(count-1) )
+        print "%s bottle%s of beer on the wall.\n" \
+              "%s bottle%s of beer. Take one down,\n" \
+              "pass it around... %s bottle%s of beer.\n" % values
 
 
 if __name__ == "__main__" :
